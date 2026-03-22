@@ -1,4 +1,4 @@
-public class NumberOfIslands {
+public class IslandProblem {
 
     public int numIslands(char[][] grid) {
         if (grid == null || grid.length == 0) return 0;
@@ -35,7 +35,7 @@ public class NumberOfIslands {
     }
 
     public static void main(String[] args) {
-        NumberOfIslands solution = new NumberOfIslands();
+        IslandProblem solution = new IslandProblem();
 
         char[][] grid = {
                 {'1','1','0','0'},
