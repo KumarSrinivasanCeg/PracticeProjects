@@ -1,26 +1,66 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 
 class TwoSumIndices {
-    public int[] twoSum(int[] nums, int target) {
-        ArrayList <Integer> list = new ArrayList<>();
+    //BruteForce Approach
+    public int[] twoSum1(int[] nums, int target) {
+        ArrayList<Integer> list = new ArrayList<>();
 
 
-        for(int i=0; i < nums.length ; i++){
-            for(int j=i+1; j <  nums.length; j++){
-                if( nums[i] + nums [j] == target)
-                {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
                     list.add(i);
                     list.add(j);
                 }
             }
 
 
-
         }
         int[] arr = list.stream().mapToInt(Integer::intValue).toArray();
         return arr;
     }
+//optimized solution
+    public int[] twoSum(int[] nums, int target) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+
+            int complimentary = target - nums[i];
+
+            if (map.containsKey(complimentary)) {
+                return new int[]{map.get(complimentary), i};
+            }
+
+            map.put(nums[i], i);
+
+        }
+
+        return null;
+
+    }
+
+    //optimized solution for the value
+    public int[] twoSumValue(int[] nums, int target) {
+
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++) {
+
+            int complimentary = target - nums[i];
+
+            if (map.containsKey(complimentary)) {
+                return new int[]{complimentary, nums[i]};
+            }
+
+            map.put(nums[i], i);
+
+        }
+
+        return null;
+
+    }
+
 
     // Example usage
     public static void main(String[] args) {
